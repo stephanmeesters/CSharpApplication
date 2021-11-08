@@ -53,7 +53,6 @@ namespace AvaloniaTest.PLOSOne
 
             foreach (Doc doc in cachedData_.response.docs)
             {
-
                 docNameList.Add(doc.short_title);
             }
             return docNameList;
@@ -76,7 +75,7 @@ namespace AvaloniaTest.PLOSOne
         {
             if (cachedData_ == null)
                 return 0;
-            return cachedData_.response.numFound;
+            return cachedData_.response.docs.Length;
         }
     }
 }

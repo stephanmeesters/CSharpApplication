@@ -17,7 +17,7 @@ namespace AvaloniaTest
             this.DataContext = new ArticleViewModel() {
                 StatusMessage = "...",
                 DocItems = new string[] { "Loading items..." },
-                SearchQuery = "DNA",
+                SearchQuery = "DNA", // default query
                 ShowPageOne = true,
                 ShowPageTwo = false
             };
@@ -59,12 +59,13 @@ namespace AvaloniaTest
                 context.StatusMessage = ex.Message;
                 return;
             }
+            context.ClearDoc();
             context.DocItems = docController.listAllDocNames().ToArray();
             context.StatusMessage = $"Number of results found: {docController.numberOfResultsFound()}";
 
             // Select the first item
             var control = this.FindControl<ListBox>("itemListBox");
-            if (control != null)
+            if (control != null && context.DocItems.Length > 0)
                 control.Selection.Select(0);
         }
 

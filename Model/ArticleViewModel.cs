@@ -27,13 +27,19 @@ namespace AvaloniaTest
         {
             statusMessage_ = "";
             searchQuery_ = "";
+            docItems_ = Array.Empty<string>();
+            ClearDoc();
+        }
+
+        public void ClearDoc()
+        {
             docId_ = "N/A";
             docTitle_ = "N/A";
             docAuthors_ = "N/A";
             docJournal_ = "N/A";
             docPublicationDate_ = "N/A";
             docAbstract_ = "N/A";
-            docItems_ = Array.Empty<string>();
+            OnPropertyChanged();
         }
 
         public string StatusMessage
