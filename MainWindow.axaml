@@ -55,8 +55,12 @@
 				            </Setter>
                         </Style>
                     </StackPanel.Styles>
-                    <Button Classes="SearchButton" Margin="10" Click="OnSwitchPage" x:Name="Page1" Width="35" Height="35"></Button>
-                    <Button Classes="AboutButton" Margin="10,20,10,10" Click="OnSwitchPage" x:Name="Page2" Width="35" Height="35" ></Button>
+                    <Border BorderBrush="#f0f4ff" BorderThickness="0 0 0 2">
+                        <Button Classes="SearchButton" Margin="10" Click="OnSwitchPage"
+                         x:Name="Page1" Width="35" Height="35" ToolTip.Tip="Search" />
+                    </Border>
+                    <Button Classes="AboutButton" Margin="10,15,10,10" Click="OnSwitchPage"
+                         x:Name="Page2" Width="35" Height="35" ToolTip.Tip="About this app" />
                 </StackPanel>
             </Grid>
         </Border>
