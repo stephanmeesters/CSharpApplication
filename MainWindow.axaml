@@ -1,0 +1,101 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="750" d:DesignHeight="450"
+        x:Class="AvaloniaTest.MainWindow"
+        Title="AvaloniaTest"
+        Background="#f6f8fe"
+        ExtendClientAreaToDecorationsHint="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="#f0f4ff" BorderThickness="0 0 2 0">
+            <Grid Grid.Column="0" Background="#ffffff" />
+        </Border>
+
+        <Border Grid.Column="1" Background="White"
+                BorderBrush="#f0f4ff"
+                BorderThickness="2"
+                CornerRadius="8"
+                Padding="5"
+                Margin="20">
+            <StackPanel Margin="10"
+             Orientation="Vertical" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                    <StackPanel.Styles>
+                        <Style Selector="Button:pointerover /template/ ContentPresenter">
+                            <Setter Property="Button.Background" Value="#1080fb"/>
+                        </Style>
+                    </StackPanel.Styles>
+                    <TextBox Text="{Binding SearchQuery}" Width="260" />
+                    <Button Margin="10,0,0,0" Click="OnSearchClicked" Width="70"
+                     Background="#0c85ff" Foreground="White">Search</Button>
+                </StackPanel>
+                <Border CornerRadius="8" Background="#f0f4ff" Margin="0,5,0,0">
+                    <ListBox Name = "listbox" Items="{Binding DocItems}"
+                        MinWidth="350" MaxWidth="350" MinHeight="385" MaxHeight="385" SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged" Background="#f0f4ff"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        CornerRadius="8">
+                        <ListBox.Styles>
+                            <Style Selector="ListBoxItem">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </ListBox.Styles>
+                    </ListBox>
+                </Border>
+                <TextBlock Text="{Binding StatusMessage}" FontSize="10" Margin="0,15,10,0" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="2" Background="White"
+                BorderBrush="#f0f4ff"
+                BorderThickness="2"
+                CornerRadius="8"
+                Padding="5"
+                Margin="20">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            <StackPanel Margin="10" Orientation="Vertical" MaxWidth="350">
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBlock Text="ID:" Padding="5" Width="90" Margin="0,5,0,0" />
+                    <TextBox Text="{Binding DocId}" Width="250" Margin="0,5,0,0"
+                     Background="#f0f4ff" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Title:" Padding="5" Width="90" />
+                    <TextBox Text="{Binding DocTitle}" Width="250" Margin="0,5,0,0"
+                     TextWrapping="Wrap" AcceptsReturn="True" Background="#f0f4ff"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Authors:" Padding="5" Width="90" />
+                    <TextBox Text="{Binding DocAuthors}" Width="250" Margin="0,5,0,0"
+                     TextWrapping="Wrap" AcceptsReturn="True" Background="#f0f4ff" MaxHeight="150"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Journal:" Padding="5" Width="90" />
+                    <TextBox Text="{Binding DocJournal}" Width="250" Margin="0,5,0,0"
+                     TextWrapping="Wrap" AcceptsReturn="True" Background="#f0f4ff"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Publication&#x0a;date:" Padding="5" Width="90" />
+                    <TextBox Text="{Binding DocPublicationDate}" Width="250" Margin="0,5,0,0"
+                     TextWrapping="Wrap" AcceptsReturn="True" Background="#f0f4ff"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Abstract:" Padding="5" Width="90" />
+                    <TextBox Text="{Binding DocAbstract}" Width="250" MaxHeight="150" Margin="0,5,0,0"
+                     TextWrapping="Wrap" AcceptsReturn="True" Background="#f0f4ff"/>
+                </StackPanel>
+            </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>
