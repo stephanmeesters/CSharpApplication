@@ -61,7 +61,11 @@ namespace AvaloniaTest
             }
             context.ClearDoc();
             context.DocItems = docController.listAllDocNames().ToArray();
-            context.StatusMessage = $"Number of results found: {docController.numberOfResultsFound()}";
+
+            long numResults = docController.numberOfResultsFound();
+            context.StatusMessage = $"Number of results found: {numResults}";
+            if (numResults > 100)
+                context.StatusMessage += " (showing 100)";
 
             // Select the first item
             var control = this.FindControl<ListBox>("itemListBox");

@@ -75,7 +75,10 @@ namespace AvaloniaTest.PLOSOne
         {
             if (cachedData_ == null)
                 return 0;
-            return cachedData_.response.docs.Length;
+            if (cachedData_.response.docs.Length == 100)
+                return cachedData_.response.numFound;
+            else
+                return Math.Min(cachedData_.response.numFound, cachedData_.response.docs.Length);
         }
     }
 }
