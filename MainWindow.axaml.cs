@@ -17,11 +17,13 @@ namespace AvaloniaTest
             this.DataContext = new ArticleViewModel() {
                 StatusMessage = "...",
                 DocItems = new string[] { "Loading items..." },
-                SearchQuery = "DNA"
+                SearchQuery = "DNA",
+                ShowPageOne = true,
+                ShowPageTwo = false
             };
 
             this.docController = new PLOSOne.DocController();
-        
+
 #if DEBUG
             this.AttachDevTools();
 #endif
@@ -36,6 +38,9 @@ namespace AvaloniaTest
 
             // prevent window resizing
             this.CanResize = false;
+
+            Image img = new Image();
+            
         }
 
         public async void LoadContents()
@@ -56,6 +61,11 @@ namespace AvaloniaTest
             }
             context.DocItems = docController.listAllDocNames().ToArray();
             context.StatusMessage = $"Number of results found: {docController.numberOfResultsFound()}";
+
+            // Select the first item
+            var control = this.FindControl<ListBox>("itemListBox");
+            if (control != null)
+                control.Selection.Select(0);
         }
 
         public void OnSelectionChanged(object sender, SelectionChangedEventArgs args)
@@ -96,6 +106,28 @@ namespace AvaloniaTest
                 LoadContents();
             else
                 context.StatusMessage = @"Query must not be empty.";
+        }
+
+        public void OnSwitchPage(object sender, RoutedEventArgs args)
+        {
+            var context = this.DataContext as ArticleViewModel;
+            if (context == null)
+                return;
+
+            var button = args.Source as Button;
+            if(button != null)
+            {
+                if(button.Name == "Page1")
+                {
+                    context.ShowPageOne = true;
+                    context.ShowPageTwo = false;
+                }
+                else if(button.Name == "Page2")
+                {
+                    context.ShowPageOne = false;
+                    context.ShowPageTwo = true;
+                }
+            }
         }
     }
 }

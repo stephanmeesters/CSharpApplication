@@ -18,6 +18,9 @@ namespace AvaloniaTest
         private string docPublicationDate_;
         private string docAbstract_;
 
+        private bool showPageOne_;
+        private bool showPageTwo_;
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public ArticleViewModel()
@@ -144,6 +147,32 @@ namespace AvaloniaTest
                 {
                     docAbstract_ = value;
                     OnPropertyChanged(nameof(DocAbstract));
+                }
+            }
+        }
+
+        public bool ShowPageOne
+        {
+            get => showPageOne_;
+            set
+            {
+                if (value != showPageOne_)
+                {
+                    showPageOne_ = value;
+                    OnPropertyChanged(nameof(ShowPageOne));
+                }
+            }
+        }
+
+        public bool ShowPageTwo
+        {
+            get => showPageTwo_;
+            set
+            {
+                if (value != showPageTwo_)
+                {
+                    showPageTwo_ = value;
+                    OnPropertyChanged(nameof(ShowPageTwo));
                 }
             }
         }

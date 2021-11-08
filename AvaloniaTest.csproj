@@ -21,4 +21,7 @@
     <Folder Include="Model\" />
     <Folder Include="Data\" />
   </ItemGroup>
+  <ItemGroup>
+  	<AvaloniaResource Include="Assets\**"/>
+  </ItemGroup>
 </Project>
